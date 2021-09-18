@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="content">
+    <h1 class="headerText">Public address book</h1>
+    <p>
+      <span>Click this button to see all contacts:</span> 
+      <button type="button" name="show" (click)="getContacts()">Show Contacts</button>
+    </p>
+    <div *ngIf="contacts" class="table-center">
+      <table>
+        <thead>
+          <tr>
+            <th>data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let contact of contacts'>
+            <td>{{contact | json}}</td>
+          </tr>
+        </tbody>
+      </table>
+   </div>
+  </div>
+</div>
