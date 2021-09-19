@@ -155,7 +155,7 @@ namespace PublicAddressBook.Repositories
 
 			if (contacts.Count == 0)
 			{
-				return new RepositoryResult<List<ContactDTO>>(true, null, $"No contacts containing '{name}' name");
+				return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), $"No contacts containing '{name}' name");
 			}
 
 			return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), $"Successfully fetched contacts containing '{name}'");
@@ -167,7 +167,7 @@ namespace PublicAddressBook.Repositories
 
 			if (contacts.Count == 0)
 			{
-				return new RepositoryResult<List<ContactDTO>>(true, null, $"No contacts containing '{address}' address");
+				return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), $"No contacts containing '{address}' address");
 			}
 
 			return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), $"Successfully fetched contacts containing '{address}'");
@@ -179,7 +179,7 @@ namespace PublicAddressBook.Repositories
 
 			if (contacts.Count == 0)
 			{
-				return new RepositoryResult<List<ContactDTO>>(true, null, $"No contacts containing '{keyword}'");
+				return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), $"No contacts containing '{keyword}'");
 			}
 
 			return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), $"Successfully fetched contacts containing '{keyword}'");
