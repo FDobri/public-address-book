@@ -36,9 +36,8 @@ namespace PublicAddressBook.Repositories
 				if (contactDTO.PhoneNumbers != null)
 				{
 					phoneNumbers = new List<PhoneNumber>();
-					foreach (string phoneNumber in contactDTO.PhoneNumbers)
+					foreach (string phoneNumber in contactDTO.PhoneNumbers.Distinct().ToList())
 					{
-
 						phoneNumbers.Add(new PhoneNumber
 						{
 							Number = phoneNumber
@@ -72,6 +71,11 @@ namespace PublicAddressBook.Repositories
 			if (existingContact == null)
 			{
 				return new RepositoryAction(false, $"User with id '{contactID}' not found.");
+			}
+
+			if (await _context.PhoneNumber.FirstOrDefaultAsync(p => p.Number == phoneNumberDTO.Number && p.ContactId == contactID) != null)
+			{
+				return new RepositoryAction(false, $"Number '{phoneNumberDTO.Number}' already exists for contact '{existingContact.Name}'");
 			}
 
 			_context.PhoneNumber.Add(new PhoneNumber
@@ -210,7 +214,7 @@ namespace PublicAddressBook.Repositories
 			if (contactDTO.PhoneNumbers != null)
 			{
 				phoneNumbers = new List<PhoneNumber>();
-				foreach (string phoneNumber in contactDTO.PhoneNumbers)
+				foreach (string phoneNumber in contactDTO.PhoneNumbers.Distinct().ToList())
 				{
 					phoneNumbers.Add(new PhoneNumber
 					{

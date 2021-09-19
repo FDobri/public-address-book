@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PublicAddressBook.Data;
+using PublicAddressBook.Hubs;
 using PublicAddressBook.RepoInterfaces;
 using PublicAddressBook.Repositories;
 
@@ -32,12 +33,13 @@ namespace PublicAddressBook
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "PublicAddressBook", Version = "v1" });
 			});
 			services.AddEntityFrameworkNpgsql().AddDbContext<PABContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+			services.AddSignalR();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+			app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
 			if (env.IsDevelopment())
 			{
@@ -55,6 +57,7 @@ namespace PublicAddressBook
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+				endpoints.MapHub<UpdateHub>("hubs/update");
 			});
 		}
 	}

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using PublicAddressBook.DTOs.ContactDTOs;
 using PublicAddressBook.DTOs.PhoneNumberDTOs;
 using PublicAddressBook.ErrorHandling;
+using PublicAddressBook.Hubs;
 using PublicAddressBook.RepoInterfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,10 +15,12 @@ namespace PublicAddressBook.Controllers
 	public class ContactController : ControllerBase
 	{
 		private readonly IContactRepository _contactRepository;
+		private readonly IHubContext<UpdateHub> _hubContext;
 
-		public ContactController(IContactRepository contactRepository)
+		public ContactController(IContactRepository contactRepository, IHubContext<UpdateHub> hubContext)
 		{
 			_contactRepository = contactRepository;
+			_hubContext = hubContext;
 		}
 
 		[HttpPost]
@@ -29,6 +33,7 @@ namespace PublicAddressBook.Controllers
 				return BadRequest(action.Message);
 			}
 
+			await _hubContext.Clients.All.SendAsync("UpdateContacts", _contactRepository.GetAllContacts().Result.Value);
 			return Ok(action.Message);
 		}
 
@@ -42,6 +47,7 @@ namespace PublicAddressBook.Controllers
 				return BadRequest(action.Message);
 			}
 
+			await _hubContext.Clients.All.SendAsync("UpdateContacts", _contactRepository.GetAllContacts().Result.Value);
 			return Ok(action.Message);
 		}
 
@@ -55,6 +61,7 @@ namespace PublicAddressBook.Controllers
 				return BadRequest(action.Message);
 			}
 
+			await _hubContext.Clients.All.SendAsync("UpdateContacts", _contactRepository.GetAllContacts().Result.Value);
 			return Ok(action.Message);
 		}
 
@@ -146,6 +153,7 @@ namespace PublicAddressBook.Controllers
 				return BadRequest(action.Message);
 			}
 
+			await _hubContext.Clients.All.SendAsync("UpdateContacts", _contactRepository.GetAllContacts().Result.Value);
 			return Ok(action.Message);
 		}
 
@@ -159,6 +167,7 @@ namespace PublicAddressBook.Controllers
 				return BadRequest(action.Message);
 			}
 
+			await _hubContext.Clients.All.SendAsync("UpdateContacts", _contactRepository.GetAllContacts().Result.Value);
 			return Ok(action.Message);
 		}
 	}

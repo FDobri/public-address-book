@@ -9,14 +9,6 @@ namespace PublicAddressBook.Data
 		{
 
 		}
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<PhoneNumber>()
-				.HasOne(p => p.Contact);
-
-			modelBuilder.Entity<Contact>()
-				.HasMany(p => p.PhoneNumbers);
-		}
 
 		public DbSet<Contact> Contact { get; set; }
 		public DbSet<PhoneNumber> PhoneNumber { get; set; }
