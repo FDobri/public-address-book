@@ -14,5 +14,6 @@ Provides API for the model classes Contact and PhoneNumber.
 # Client
 Simple Angular app used for testing a basic functionality of getting the public address book contacts.
 
+# SignalR
 SignalR has been integrated and made to work between the API and the client. 
 Modifying data in any way will reflect in real-time changes on the front-end.
