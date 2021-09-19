@@ -14,7 +14,7 @@ namespace PublicAddressBook.Repositories
 {
 	public class ContactRepository : IContactRepository
 	{
-		private const int NUM_CONTACTS_PER_PAGE = 200;
+		private const int NUM_CONTACTS_PER_PAGE = 20;
 
 		private PABContext _context;
 
@@ -121,6 +121,9 @@ namespace PublicAddressBook.Repositories
 			return new RepositoryResult<List<ContactDTO>>(true, contacts.ConvertToContactDTOs(), "Successfully fetched contacts.");
 		}
 
+		/// <summary>
+		/// Returns a sorted list (first by name, then by address, in ascending order)
+		/// </summary>
 		public async Task<RepositoryResult<List<ContactDTO>>> GetContactsPaged(int page)
 		{
 			List<Contact> contacts = await _context.Contact.Include(p => p.PhoneNumbers).OrderBy(p => p.Name).ThenBy(p => p.Address).ToListAsync();

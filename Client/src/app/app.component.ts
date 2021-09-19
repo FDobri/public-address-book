@@ -11,8 +11,7 @@ import { UpdateService } from './services/update.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  // public contacts: ContactDTO[];
-  public singleContact: ContactDTO;
+
   constructor(private httpService: HttpService, public updateService: UpdateService) {}
 
   ngOnInit() {

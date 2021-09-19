@@ -1,7 +1,6 @@
 ﻿using PublicAddressBook.DTOs.ContactDTOs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PublicAddressBook.Models
 {
@@ -15,7 +14,7 @@ namespace PublicAddressBook.Models
 		public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
 	}
 
-	public static class ContactHelper
+	public static class ContactExtensionMethods
 	{
 		public static ContactDTO ConvertToContactDTO(this Contact contact)
 		{

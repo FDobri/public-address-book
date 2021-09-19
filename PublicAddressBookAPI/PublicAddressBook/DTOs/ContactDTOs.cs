@@ -19,19 +19,5 @@ namespace PublicAddressBook.DTOs
 			public string Address { get; set; }
 			public List<string> PhoneNumbers { get; set; }
 		}
-
-		public static class ContactDTOHelper
-		{
-			public static Contact ToContactDTO(this ContactDTO contactDTO, List<PhoneNumber> phoneNumbers)
-			{
-				return new Contact
-				{
-					Name = contactDTO.Name,
-					DateOfBirth = contactDTO.DateOfBirth,
-					Address = contactDTO.Address,
-					PhoneNumbers = phoneNumbers
-				};
-			}
-		}
 	}
 }

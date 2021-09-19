@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "9641e26c-3231-45b3-b83c-c602351c6884",
+		"name": "public address book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"kale55\",\r\n  \"dateOfBirth\": \"1978-09-18\",\r\n  \"address\": \"ulica mraleuuu 32\",\r\n  \"phoneNumbers\": [\r\n    \"092-222-222\",\r\n    \"095-555-555\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{port}}/api/Contact",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"Contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new phone number",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"number\": \"091-222-333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/34/phoneNumber",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"34",
+						"phoneNumber"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete phone number",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/24/phoneNumber/091-111-222",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"24",
+						"phoneNumber",
+						"091-111-222"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contacts paged",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/page/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"page",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contacts containing name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/containsName/kal",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"containsName",
+						"kal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contacts containing address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/containsAddress/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"containsAddress",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contacts by keyword",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/search/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"search",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contacts by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/34",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update contacts",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"lukica modric\",\r\n  \"dateOfBirth\": \"2021-09-18T16:33:43.058Z\",\r\n  \"address\": \"neka ulica 33\",\r\n  \"phoneNumbers\": [\r\n    \"452389012390\",\r\n    \"452389012390\",\r\n    \"552389012390\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/13",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete contact",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"ana\",\r\n  \"dateOfBirth\": \"1984-09-18T16:22:14.555Z\",\r\n  \"address\": \"anina ulica 22\",\r\n  \"phoneNumbers\": [\r\n    \"099999999\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{port}}/api/Contact/34",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"Contact",
+						"34"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "44397"
+		}
+	]
+}

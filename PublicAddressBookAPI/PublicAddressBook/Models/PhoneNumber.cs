@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PublicAddressBook.Models
+﻿namespace PublicAddressBook.Models
 {
 	public class PhoneNumber
 	{
