@@ -35,69 +35,6 @@
 			"response": []
 		},
 		{
-			"name": "Create new phone number",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"number\": \"091-222-333\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:44397/api/Contact/34/phoneNumber",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "44397",
-					"path": [
-						"api",
-						"Contact",
-						"34",
-						"phoneNumber"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete phone number",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:44397/api/Contact/24/phoneNumber/091-111-222",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "44397",
-					"path": [
-						"api",
-						"Contact",
-						"24",
-						"phoneNumber",
-						"091-111-222"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get all contacts",
 			"request": {
 				"method": "GET",
@@ -233,7 +170,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"lukica modric\",\r\n  \"dateOfBirth\": \"2021-09-18T16:33:43.058Z\",\r\n  \"address\": \"neka ulica 33\",\r\n  \"phoneNumbers\": [\r\n    \"452389012390\",\r\n    \"452389012390\",\r\n    \"552389012390\"\r\n  ]\r\n}",
+					"raw": "{\r\n  \"name\": \"gospodar vremena\",\r\n  \"dateOfBirth\": \"1990-09-18T16:33:43.058Z\",\r\n  \"address\": \"OVO JE MATRIX\",\r\n  \"phoneNumbers\": [\r\n    \"1(800)-NEO\"\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -241,16 +178,16 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:44397/api/Contact/13",
+					"raw": "https://localhost:{{port}}/api/Contact/36",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "44397",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"Contact",
-						"13"
+						"36"
 					]
 				}
 			},
@@ -281,6 +218,114 @@
 						"api",
 						"Contact",
 						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new phone number",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"number\": \"091-222-333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/34/phoneNumber",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"34",
+						"phoneNumber"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contacts phone numbers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/34/phoneNumber",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"34",
+						"phoneNumber"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contact number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/58/phoneNumber/095-555-555",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"58",
+						"phoneNumber",
+						"095-555-555"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete phone number",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44397/api/Contact/24/phoneNumber/091-111-222",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44397",
+					"path": [
+						"api",
+						"Contact",
+						"24",
+						"phoneNumber",
+						"091-111-222"
 					]
 				}
 			},

@@ -199,6 +199,44 @@ namespace PublicAddressBook.Repositories
 			}
 		}
 
+		public async Task<RepositoryResult<List<PhoneNumberDTO>>> GetContactNumbers(int id)
+		{
+			Contact existingContact = await _context.Contact.Include(p => p.PhoneNumbers).FirstOrDefaultAsync(p => p.Id == id);
+
+			if (existingContact == null)
+			{
+				return new RepositoryResult<List<PhoneNumberDTO>>(false, null, $"Couldn't find contact with id '{id}'");
+			}
+
+			List<PhoneNumber> phoneNumbers = await _context.PhoneNumber.Where(p => p.Contact == existingContact).ToListAsync();
+			if (phoneNumbers.Count == 0)
+			{
+				return new RepositoryResult<List<PhoneNumberDTO>>(true, phoneNumbers.ConvertToPhoneNumberDTOs(), $"Couldn't find numbers for contact with id '{id}'");
+			}
+			else
+			{
+				return new RepositoryResult<List<PhoneNumberDTO>>(true, phoneNumbers.ConvertToPhoneNumberDTOs(), $"Successfully found numbers for contact with id '{id}'");
+			}
+		}
+
+		public async Task<RepositoryResult<PhoneNumberDTO>> GetContactNumber(int id, string number)
+		{
+			Contact existingContact = await _context.Contact.Include(p => p.PhoneNumbers).FirstOrDefaultAsync(p => p.Id == id);
+
+			if (existingContact == null)
+			{
+				return new RepositoryResult<PhoneNumberDTO>(false, null, $"Couldn't find contact with id '{id}'");
+			}
+
+			PhoneNumber phoneNumber = await _context.PhoneNumber.FirstOrDefaultAsync(p => p.Contact == existingContact && p.Number == number);
+			if (phoneNumber == null)
+			{
+				return new RepositoryResult<PhoneNumberDTO>(false, null, $"Couldn't find number '{number}' for contact with id '{id}'");
+			}
+
+			return new RepositoryResult<PhoneNumberDTO>(true, phoneNumber.ConvertToPhoneNumberDTO(), $"Couldn't find number '{number}' for contact with id '{id}'");
+		}
+
 		public async Task<RepositoryAction> UpdateContact(int id, ContactDTO contactDTO)
 		{
 			Contact existingContact = await _context.Contact.Include(p => p.PhoneNumbers).FirstOrDefaultAsync(p => p.Id == id);

@@ -143,6 +143,32 @@ namespace PublicAddressBook.Controllers
 			return Ok(result.Value);
 		}
 
+		[HttpGet("{id}/phoneNumber")]
+		public async Task<IActionResult> GetContactNumbers(int id)
+		{
+			RepositoryResult<List<PhoneNumberDTO>> result = await _contactRepository.GetContactNumbers(id);
+
+			if (!result)
+			{
+				return BadRequest(result.Message);
+			}
+
+			return Ok(result.Value);
+		}
+
+		[HttpGet("{id}/phoneNumber/{number}")]
+		public async Task<IActionResult> GetContactNumber(int id, string number)
+		{
+			RepositoryResult<PhoneNumberDTO> result = await _contactRepository.GetContactNumber(id, number);
+
+			if (!result)
+			{
+				return BadRequest(result.Message);
+			}
+
+			return Ok(result.Value);
+		}
+
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateContact(int id, ContactDTO contactDTO)
 		{
